@@ -15,3 +15,7 @@ C:\Users\sevryukovb\documents\visual studio 2017\Projects\WpfTask\obj\Debug\WpfT
 C:\Users\sevryukovb\documents\visual studio 2017\Projects\WpfTask\obj\Debug\WpfTask.exe
 C:\Users\sevryukovb\documents\visual studio 2017\Projects\WpfTask\obj\Debug\WpfTask.pdb
 C:\Users\sevryukovb\documents\visual studio 2017\Projects\WpfTask\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\sevryukovb\documents\visual studio 2017\Projects\WpfTask\obj\Debug\Views\Task2.g.cs
+C:\Users\sevryukovb\documents\visual studio 2017\Projects\WpfTask\obj\Debug\Views\Task2.baml
+C:\Users\sevryukovb\documents\visual studio 2017\Projects\WpfTask\obj\Debug\Views\Task5.g.cs
+C:\Users\sevryukovb\documents\visual studio 2017\Projects\WpfTask\obj\Debug\Views\Task5.baml

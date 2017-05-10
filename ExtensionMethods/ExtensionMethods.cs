@@ -16,7 +16,6 @@ namespace ExtensionMethods
     public static class ExtensionMethods
     {
         public static object CloneObject<T>(this object source)
-            where T : ICloneable
         {
             List<T> result = Activator.CreateInstance<List<T>>();
                 

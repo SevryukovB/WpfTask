@@ -1,0 +1,28 @@
+﻿<Window x:Class="WpfTask.Views.Task5"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:vm="clr-namespace:WpfTask.ViewModels"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewModels="clr-namespace:WpfTask.ViewModels"
+        xmlns:local="clr-namespace:WpfTask.Views"
+        mc:Ignorable="d"
+        Title="Task5" Height="416.495" Width="521.258"
+        DataContext="{DynamicResource Task5ViewModel}">
+    <Window.Resources>
+        <vm:Task5ViewModel x:Key="Task5ViewModel"/>
+    </Window.Resources>
+    <Grid>
+        <TextBlock x:Name="StrtNumber" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Start number:" VerticalAlignment="Top"/>
+        <TextBlock x:Name="StrtNumberZero" HorizontalAlignment="Left" Margin="10,26,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top"/>
+        <TextBlock x:Name="EndNumber" HorizontalAlignment="Left" Margin="101,10,0,0" TextWrapping="Wrap" Text="Enter end number:" VerticalAlignment="Top"/>
+        <TextBox x:Name="EndNumberTb" Text="{Binding EndNumber, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="16" Margin="101,26,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="98"/>
+        <Button x:Name="GenerateBtn" Command="{Binding Generate}"  Content="Generate" HorizontalAlignment="Left" Margin="368,24,0,0" VerticalAlignment="Top" Width="75" CommandParameter="{Binding Queue}"/>
+        <TextBlock x:Name="CountNumber" HorizontalAlignment="Left" Margin="204,10,-11,0" TextWrapping="Wrap" Text="Enter count of numbers:" VerticalAlignment="Top"/>
+        <TextBox x:Name="CountNumberTb" Text="{Binding Count, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="16" Margin="204,26,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="124"/>
+        <TextBlock x:Name="Randnumbers" HorizontalAlignment="Left" Margin="10,72,0,0" TextWrapping="Wrap" Text="Your random numberrs:" VerticalAlignment="Top"/>
+        <StackPanel HorizontalAlignment="Left" Height="220" Margin="10,88,0,0" VerticalAlignment="Top" Width="252"/>
+        <ListBox ItemsSource="{Binding Queue, UpdateSourceTrigger=PropertyChanged}"  HorizontalAlignment="Left" Height="182" Margin="10,93,0,0" VerticalAlignment="Top" Width="227"/>
+
+    </Grid>
+</Window>

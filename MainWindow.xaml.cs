@@ -29,8 +29,20 @@ namespace WpfTask
 
         private void Task1Btn_Click(object sender, RoutedEventArgs e)
         {
-            var task1 = new Task1();
+           var task1 = new Task1();
             task1.ShowDialog();
+        }
+
+        private void Task2Btn_Click(object sender, RoutedEventArgs e)
+        {
+            var task2 = new Task2();
+            task2.ShowDialog();
+        }
+
+        private void Task5tn_Click(object sender, RoutedEventArgs e)
+        {
+            var task5 = new Task5();
+            task5.ShowDialog();
         }
     }
 }

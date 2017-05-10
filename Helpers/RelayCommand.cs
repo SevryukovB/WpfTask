@@ -7,7 +7,7 @@ using System.Windows.Input;
 
 namespace WpfTask.Helpers
 {
-    class RelayCommand : ICommand
+    public class RelayCommand : ICommand
     {
         #region Fields
 
@@ -31,6 +31,7 @@ namespace WpfTask.Helpers
             _execute = execute;
             _canExecute = canExecute;
         }
+       
         #endregion // Constructors
 
         #region ICommand Members

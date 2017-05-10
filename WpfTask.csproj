@@ -36,6 +36,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -55,11 +56,20 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Helpers\RelayCommand.cs" />
+    <Compile Include="Helpers\TaskCommand.cs" />
     <Compile Include="Models\Person.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="ViewModels\Task1ViewModel.cs" />
+    <Compile Include="ViewModels\Task2ViewModel.cs" />
+    <Compile Include="ViewModels\Task5ViewModel.cs" />
     <Compile Include="Views\Task1.xaml.cs">
       <DependentUpon>Task1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Task2.xaml.cs">
+      <DependentUpon>Task2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Task5.xaml.cs">
+      <DependentUpon>Task5.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -75,6 +85,14 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\Task1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Task2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Task5.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
