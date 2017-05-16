@@ -9,7 +9,8 @@
     <Grid>
         <Button x:Name="Task1Btn" Content="Task 1" HorizontalAlignment="Left" Margin="143,82,0,0" VerticalAlignment="Top" Width="75" Click="Task1Btn_Click"/>
         <Button x:Name="Task2Btn" Content="Task 2" HorizontalAlignment="Left" Margin="143,107,0,0" VerticalAlignment="Top" Width="75" Click="Task2Btn_Click"/>
-        <Button x:Name="Task5tn" Content="Task 5" HorizontalAlignment="Left" Margin="143,132,0,0" VerticalAlignment="Top" Width="75" Click="Task5tn_Click"/>
+        <Button x:Name="Task5tn" Content="Task 5" HorizontalAlignment="Left" Margin="143,167,0,0" VerticalAlignment="Top" Width="75" Click="Task5tn_Click"/>
+        <Button x:Name="Task3tn" Content="Task 3" HorizontalAlignment="Left" Margin="143,132,0,0" VerticalAlignment="Top" Width="75" Click="Task3tn_Click"/>
 
     </Grid>
 </Window>

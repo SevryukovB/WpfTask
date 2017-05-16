@@ -16,19 +16,19 @@ namespace WpfTask.ViewModels
 {
     class Task5ViewModel : INotifyCollectionChanged, INotifyPropertyChanged
     {
-        public RelayCommand Generate { get; set; }
+        public RelayCommand GenerateCommand { get; set; }
         public string EndNumber { get; set; }
         public string Count { get; set; }
         public Queue Queue { get; set;  }
 
         public Task5ViewModel()
         {
-            Queue = new Queue(){ };
+            Queue = new Queue();
             Queue.Enqueue(1);
             Queue.Enqueue(2);
             Queue.Enqueue(3);
             Queue.Enqueue(4);
-            Generate = new RelayCommand(GetGenerate);
+            GenerateCommand = new RelayCommand(GetGenerate);
         }
 
         private void GetGenerate(object obj)
@@ -56,17 +56,18 @@ namespace WpfTask.ViewModels
                 Queue.Enqueue(item);
             }
 
-            foreach (var item in arr)
-            {
+            //foreach (var item in arr)
+            //{
 
-                Queue.Enqueue(item);
-                CollectionChanged?.Invoke(this,
-                    new NotifyCollectionChangedEventArgs(
-                        NotifyCollectionChangedAction.Add, item));
-            }
+            //    Queue.Enqueue(Convert.ToInt32(item));
+            //    CollectionChanged?.Invoke(this,
+            //        new NotifyCollectionChangedEventArgs(
+            //            NotifyCollectionChangedAction.Add, item));
+            //}
         }
 
         public event NotifyCollectionChangedEventHandler CollectionChanged;
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         [NotifyPropertyChangedInvocator]

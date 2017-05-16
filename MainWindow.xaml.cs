@@ -44,5 +44,11 @@ namespace WpfTask
             var task5 = new Task5();
             task5.ShowDialog();
         }
+
+        private void Task3tn_Click(object sender, RoutedEventArgs e)
+        {
+            var task3 = new Task3();
+            task3.ShowDialog();
+        }
     }
 }

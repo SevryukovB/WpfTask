@@ -15,23 +15,13 @@ using System.Windows.Shapes;
 namespace WpfTask.Views
 {
     /// <summary>
-    /// Логика взаимодействия для Task5.xaml
+    /// Логика взаимодействия для Task3.xaml
     /// </summary>
-    public partial class Task5 : Window
+    public partial class Task3 : Window
     {
-        public Task5()
+        public Task3()
         {
             InitializeComponent();
-        }
-
-        private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
-        private void DataGrid_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
-        {
-
         }
     }
 }

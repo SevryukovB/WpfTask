@@ -27,7 +27,7 @@ namespace WpfTask.ViewModels
                 new Person { FirstName="Dick", LastName="Tracey", Age=40 },
                 new Person { FirstName="Harry", LastName="Hill", Age=60 },
             };
-
+            
             CloneCommand = new RelayCommand(Clone);
         }
 

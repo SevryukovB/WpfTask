@@ -19,3 +19,5 @@ C:\Users\sevryukovb\documents\visual studio 2017\Projects\WpfTask\obj\Debug\View
 C:\Users\sevryukovb\documents\visual studio 2017\Projects\WpfTask\obj\Debug\Views\Task2.baml
 C:\Users\sevryukovb\documents\visual studio 2017\Projects\WpfTask\obj\Debug\Views\Task5.g.cs
 C:\Users\sevryukovb\documents\visual studio 2017\Projects\WpfTask\obj\Debug\Views\Task5.baml
+C:\Users\sevryukovb\documents\visual studio 2017\Projects\WpfTask\obj\Debug\Views\Task3.g.cs
+C:\Users\sevryukovb\documents\visual studio 2017\Projects\WpfTask\obj\Debug\Views\Task3.baml

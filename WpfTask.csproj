@@ -57,16 +57,21 @@
     </ApplicationDefinition>
     <Compile Include="Helpers\RelayCommand.cs" />
     <Compile Include="Helpers\TaskCommand.cs" />
+    <Compile Include="Interfaces\IMutex.cs" />
     <Compile Include="Models\Person.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="ViewModels\Task1ViewModel.cs" />
     <Compile Include="ViewModels\Task2ViewModel.cs" />
+    <Compile Include="ViewModels\Task3ViewModel.cs" />
     <Compile Include="ViewModels\Task5ViewModel.cs" />
     <Compile Include="Views\Task1.xaml.cs">
       <DependentUpon>Task1.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Task2.xaml.cs">
       <DependentUpon>Task2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Task3.xaml.cs">
+      <DependentUpon>Task3.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Task5.xaml.cs">
       <DependentUpon>Task5.xaml</DependentUpon>
@@ -89,6 +94,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Task2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Task3.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
