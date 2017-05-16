@@ -21,3 +21,9 @@ C:\Users\sevryukovb\documents\visual studio 2017\Projects\WpfTask\obj\Debug\View
 C:\Users\sevryukovb\documents\visual studio 2017\Projects\WpfTask\obj\Debug\Views\Task5.baml
 C:\Users\sevryukovb\documents\visual studio 2017\Projects\WpfTask\obj\Debug\Views\Task3.g.cs
 C:\Users\sevryukovb\documents\visual studio 2017\Projects\WpfTask\obj\Debug\Views\Task3.baml
+C:\Users\sevryukovb\documents\visual studio 2017\Projects\WpfTask\bin\Debug\Nito.AsyncEx.Concurrent.dll
+C:\Users\sevryukovb\documents\visual studio 2017\Projects\WpfTask\bin\Debug\Nito.AsyncEx.dll
+C:\Users\sevryukovb\documents\visual studio 2017\Projects\WpfTask\bin\Debug\Nito.AsyncEx.Enlightenment.dll
+C:\Users\sevryukovb\documents\visual studio 2017\Projects\WpfTask\bin\Debug\Nito.AsyncEx.xml
+C:\Users\sevryukovb\documents\visual studio 2017\Projects\WpfTask\bin\Debug\Nito.AsyncEx.Concurrent.xml
+C:\Users\sevryukovb\documents\visual studio 2017\Projects\WpfTask\bin\Debug\Nito.AsyncEx.Enlightenment.xml
