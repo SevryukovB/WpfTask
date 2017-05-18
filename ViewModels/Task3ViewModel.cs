@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Threading;
 using WpfTask.Helpers;
 
 namespace WpfTask.ViewModels
@@ -35,12 +36,18 @@ namespace WpfTask.ViewModels
 
         public async void SomeM(object obj)
         {
-            for (int i = 0; i < 9; i++)
-            {
-                Thread myThread = new Thread(Count);
-                myThread.Name = "Поток " + i.ToString();
-                myThread.Start();
-            }
+            myMutex mut = new myMutex();
+            await mut.Lock();
+            // Simulate some work.
+            //Thread.Sleep(1000);
+            // Release the Mutex.
+            mut.Release();
+            //for (int i = 0; i < 9; i++)
+            //{
+            //    Thread myThread = new Thread(Count);
+            //    myThread.Name = "Поток " + i.ToString();
+            //    myThread.Start();
+            //}
         }
 
         public async void Count()
@@ -63,5 +70,59 @@ namespace WpfTask.ViewModels
             }
              mutexObj.ReleaseMutex();
         }
+
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ///
+        
+    }
+
+    public class myMutex
+    {
+
+        Mutex mut = new Mutex();
+        Dispatcher UserDispatcher;
+
+        public async Task Lock()
+        {
+            //await Task.Factory.StartNew(() => { mut.WaitOne();});
+            await Task.Factory.StartNew(() =>
+            {
+                mut.WaitOne();
+                Console.WriteLine("ThreadOne, executing ThreadMethod, " +
+                    "is {0} from the thread pool.",
+                    Thread.CurrentThread.ManagedThreadId);
+                UserDispatcher = Dispatcher.CurrentDispatcher;
+            });
+        }
+
+        public void Release()
+        {
+
+            try
+            {
+                if (mut != null && UserDispatcher != null)
+                {
+                    // Some mistake below
+                    UserDispatcher.Invoke(new Action(() =>
+                    {
+                        Console.WriteLine("ThreadOne, executing ThreadMethod, " +
+                         "is {0} from the thread pool.",
+                         Thread.CurrentThread.ManagedThreadId);
+                        Console.WriteLine("Releasing");
+                        mut.ReleaseMutex();
+                    }));
+                }
+                else
+                {
+                    Console.WriteLine("Null");
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+        }
+
     }
 }

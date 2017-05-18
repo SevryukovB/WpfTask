@@ -1,79 +1,109 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
 using System.Net;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using WpfTask.Annotations;
 using WpfTask.Helpers;
 using WpfTask.Models;
+using Timer = System.Threading.Timer;
 
 namespace WpfTask.ViewModels
 {
-    class Task5ViewModel : INotifyCollectionChanged, INotifyPropertyChanged
+    class Task5ViewModel 
     {
+        
         public RelayCommand GenerateCommand { get; set; }
-        public string EndNumber { get; set; }
-        public string Count { get; set; }
-        public Queue Queue { get; set;  }
+        public RelayCommand DequeueCommand { get; set; }
+        public int EndNumber { get; set; }
+        public int Count { get; set; }
+        public ObservableQueue<int> Queue { get; set; }
 
         public Task5ViewModel()
         {
-            Queue = new Queue();
+            Queue = new ObservableQueue<int>();
             Queue.Enqueue(1);
             Queue.Enqueue(2);
-            Queue.Enqueue(3);
-            Queue.Enqueue(4);
+            
             GenerateCommand = new RelayCommand(GetGenerate);
+            DequeueCommand = new RelayCommand(Dequeue);
         }
 
-        private void GetGenerate(object obj)
+        private async void Dequeue(object obj)
         {
-            string url = $"https://www.random.org/integers/?num={Count}&min=0&max={EndNumber}&col=1&base=10&format=plain&rnd=new";
-            var data = LoadData(url);
-
-            string[] subStrings = data.Split('\n');
-
-            FillQueue(subStrings);
-
-        }
-
-        private string LoadData(string url)
-        {
-            WebClient webClient = new WebClient();
-            return webClient.DownloadString(url);
-        }
-
-        private void FillQueue(string[] arr)
-        {
-            for (int i = 0; i < arr.Length - 1; i++)
+            if (Queue.Count()<=1)
             {
-                int item = Convert.ToInt32(arr[i]);
-                Queue.Enqueue(item);
+                await LoadDataFromBCL();
+                Queue.Dequeue();
             }
-
-            //foreach (var item in arr)
-            //{
-
-            //    Queue.Enqueue(Convert.ToInt32(item));
-            //    CollectionChanged?.Invoke(this,
-            //        new NotifyCollectionChangedEventArgs(
-            //            NotifyCollectionChangedAction.Add, item));
-            //}
+            else
+            {
+                Queue.Dequeue();
+            }
         }
 
-        public event NotifyCollectionChangedEventHandler CollectionChanged;
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        [NotifyPropertyChangedInvocator]
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        private async void GetGenerate(object obj)
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            LoadData();
+        }
+
+        private void LoadData()
+        {
+            try
+            {
+                LoadDataFromUrl();
+            }
+            catch (Exception e)
+            {
+                LoadDataFromBCL();
+            }
+        }
+
+        private void LoadDataFromUrl()
+        {
+            List<int> numbers = new List<int>();
+            string url = $"https://www.random.org/integers/?num={Count}&min=0&max={EndNumber}&col=1&base=10&format=plain&rnd=new";
+
+            WebClient webClient = new WebClient();
+            string data = webClient.DownloadString(url);
+            
+
+            numbers = data.Split(new []{'\n'}, StringSplitOptions.RemoveEmptyEntries).Select(Int32.Parse).ToList();//Parse values
+
+            FillQueue(numbers);//Fill queue from arr
+        }
+
+        private async Task LoadDataFromBCL()
+        {
+            List<int> values = new List<int>();
+            var randEndNumber = new Random();
+            
+
+            for (int i = 0; i < Count; i++)
+            {
+                var endNumber = randEndNumber.Next(0, EndNumber);
+
+                values.Add(endNumber);
+            }
+            
+
+            FillQueue(values);//Fill queue from list
+        }
+
+        private void FillQueue(List<int> lst)
+        {
+            for (int i = 0; i < lst.Count; i++)
+            {
+                Queue.Enqueue(lst[i]);
+            }
         }
     }
 }
