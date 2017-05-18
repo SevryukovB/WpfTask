@@ -20,17 +20,14 @@
         <TextBlock x:Name="CountNumber" HorizontalAlignment="Left" Margin="204,10,-11,0" TextWrapping="Wrap" Text="Enter count of numbers:" VerticalAlignment="Top"/>
         <TextBox x:Name="CountNumberTb" Text="{Binding Count, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Height="16" Margin="204,26,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="124"/>
         <TextBlock x:Name="Randnumbers" HorizontalAlignment="Left" Margin="10,72,0,0" TextWrapping="Wrap" Text="Your random numberrs:" VerticalAlignment="Top"/>
-        <StackPanel HorizontalAlignment="Left" Height="220" Margin="10,93,0,0" VerticalAlignment="Top" Width="252">
-            <ListBox x:Name="lstBox" ItemsSource="{Binding Queue1, UpdateSourceTrigger=PropertyChanged}"  HorizontalAlignment="Left" Height="122" Margin="10,93,0,0" VerticalAlignment="Top" Width="227"/>
-        </StackPanel>
-        <StackPanel HorizontalAlignment="Left" Height="272" Margin="267,93,0,0" VerticalAlignment="Top" Width="236">
+        <StackPanel HorizontalAlignment="Left" Height="272" Margin="10,88,0,0" VerticalAlignment="Top" Width="236">
             <DataGrid x:Name="DataGrid1" Height="209" AutoGenerateColumns="False" ItemsSource="{Binding Queue}">
                 <DataGrid.Columns>
                     <DataGridTextColumn  Binding="{Binding}" />
                 </DataGrid.Columns>
             </DataGrid>
             <Button x:Name="GenerateBtn" Command="{Binding GenerateCommand}" CommandParameter="{Binding ItemsSource, ElementName=DataGrid1}" Content="Generate" HorizontalAlignment="Left" Margin="0,24,0,0" VerticalAlignment="Top" Width="75"/>
-            <Button x:Name="Dequeue" Command="{Binding DequeueCommand}" CommandParameter="{Binding ItemsSource, ElementName=DataGrid1}" Content="Dequeue" HorizontalAlignment="Left" Margin="100,-24,0,0" VerticalAlignment="Top" Width="75"/>
+            <Button x:Name="Dequeue" Command="{Binding DequeueCommand}" CommandParameter="{Binding ItemsSource, ElementName=DataGrid1}" Content="Dequeue" HorizontalAlignment="Left" Margin="100,-20,0,0" VerticalAlignment="Top" Width="75"/>
         </StackPanel>
 
     </Grid>

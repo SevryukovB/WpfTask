@@ -1,20 +1,9 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Collections.Specialized;
-using System.ComponentModel;
 using System.Linq;
 using System.Net;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
-using System.Windows.Forms;
-using WpfTask.Annotations;
 using WpfTask.Helpers;
-using WpfTask.Models;
-using Timer = System.Threading.Timer;
 
 namespace WpfTask.ViewModels
 {
