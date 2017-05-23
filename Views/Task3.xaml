@@ -6,7 +6,7 @@
         xmlns:viewModels="clr-namespace:WpfTask.ViewModels"
         xmlns:local="clr-namespace:WpfTask.Views"
         mc:Ignorable="d"
-        Title="Task3" Height="300" Width="300"
+        Title="Task3" Height="463.139" Width="300"
         DataContext="{DynamicResource Task3ViewModel}">
     <Window.Resources>
         <viewModels:Task3ViewModel x:Key="Task3ViewModel"/>
@@ -14,13 +14,7 @@
     <Grid>
         <StackPanel>
             <Button Content="Add TextBox" Command="{Binding StartCommand}"/>
-            <ItemsControl ItemsSource="{Binding SomeCollection}">
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <TextBox Text="{Binding Path=.}"/>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
+            <ListBox Height="408" ItemsSource="{Binding SomeCollection}"/>
         </StackPanel>
     </Grid>
 </Window>

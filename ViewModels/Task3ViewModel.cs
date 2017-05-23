@@ -8,10 +8,11 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Threading;
 using WpfTask.Helpers;
+using WpfTask.Interfaces;
 
 namespace WpfTask.ViewModels
 {
-    class Task3ViewModel : INotifyPropertyChanged
+    class Task3ViewModel
     {
         public ObservableCollection<string> SomeCollection { get; set; }
         public RelayCommand StartCommand { get; set; }
@@ -22,107 +23,47 @@ namespace WpfTask.ViewModels
         public Task3ViewModel()
         {
             SomeCollection = new ObservableCollection<string>();
+            SomeCollection.Add("keks");
             StartCommand = new RelayCommand(SomeM);
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected void OnPropertyChanged(string propertyName)
+        public void SomeM(object s)
         {
-            if (PropertyChanged != null)
+            for (int i = 0; i < 5; i++)
             {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+                App.Current.Dispatcher.Invoke((Action)delegate
+                {
+                    Thread myThread = new Thread(Count);
+                    myThread.Name = "Поток " + i.ToString();
+                    myThread.Start();
+                });
             }
-        }
-
-        public async void SomeM(object obj)
-        {
-            myMutex mut = new myMutex();
-            await mut.Lock();
-            // Simulate some work.
-            //Thread.Sleep(1000);
-            // Release the Mutex.
-            mut.Release();
-            //for (int i = 0; i < 9; i++)
-            //{
-            //    Thread myThread = new Thread(Count);
-            //    myThread.Name = "Поток " + i.ToString();
-            //    myThread.Start();
-            //}
         }
 
         public async void Count()
         {
-            await Task.Run((Action) delegate
-                {
-                    mutexObj.WaitOne();
-                }
-            );
-
+            await Lock();
             x = 1;
             for (int i = 1; i < 9; i++)
             {
                 App.Current.Dispatcher.Invoke((Action) delegate
                 {
-                    SomeCollection.Add($"X variable is - {x}");
+                    SomeCollection.Add(Thread.CurrentThread.Name + x.ToString());
                 });
                 x++;
-                Thread.Sleep(10);
             }
-             mutexObj.ReleaseMutex();
+            await Release();
         }
 
-
-        /////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        ///
-        
-    }
-
-    public class myMutex
-    {
-
-        Mutex mut = new Mutex();
-        Dispatcher UserDispatcher;
-
-        public async Task Lock()
+        public async Task<ObservableCollection<string>> Lock()
         {
-            //await Task.Factory.StartNew(() => { mut.WaitOne();});
-            await Task.Factory.StartNew(() =>
-            {
-                mut.WaitOne();
-                Console.WriteLine("ThreadOne, executing ThreadMethod, " +
-                    "is {0} from the thread pool.",
-                    Thread.CurrentThread.ManagedThreadId);
-                UserDispatcher = Dispatcher.CurrentDispatcher;
-            });
+            mutexObj.WaitOne();
+            return new ObservableCollection<string>();
         }
 
-        public void Release()
+        public async Task Release()
         {
-
-            try
-            {
-                if (mut != null && UserDispatcher != null)
-                {
-                    // Some mistake below
-                    UserDispatcher.Invoke(new Action(() =>
-                    {
-                        Console.WriteLine("ThreadOne, executing ThreadMethod, " +
-                         "is {0} from the thread pool.",
-                         Thread.CurrentThread.ManagedThreadId);
-                        Console.WriteLine("Releasing");
-                        mut.ReleaseMutex();
-                    }));
-                }
-                else
-                {
-                    Console.WriteLine("Null");
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-            }
+            mutexObj.ReleaseMutex();
         }
-
     }
 }
