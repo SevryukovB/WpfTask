@@ -55,10 +55,9 @@ namespace WpfTask.ViewModels
             await Release();
         }
 
-        public async Task<ObservableCollection<string>> Lock()
+        public async Task Lock()
         {
             mutexObj.WaitOne();
-            return new ObservableCollection<string>();
         }
 
         public async Task Release()
